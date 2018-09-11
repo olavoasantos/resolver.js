@@ -1,5 +1,5 @@
 {
-  "name": "resover.js",
+  "name": "resolver.js",
   "version": "0.0.1",
   "description": "Resolve your routes and static files paths using dynamic variables",
   "main": "index.js",
