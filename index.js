@@ -1,4 +1,4 @@
-const splitPath = (name) => {
+const splitPath = name => {
   if (name.includes('/')) {
     return name.split('/');
   }
@@ -30,9 +30,18 @@ const replaceVariable = (path, name, value) => {
 const resolveVariables = (path, data) =>
   Object.keys(data).reduce(
     (resolvedPath, name) => replaceVariable(resolvedPath, name, data[name]),
-    path,
+    path
   );
 
+/**
+ * Resolve
+ *
+ * Resolves the path from from a list item based on
+ * a path name and data.
+ * @param {Object} list Object containing the mapped data
+ * @param {String} name Path to be resolved
+ * @param {Object} data Object containing variables and its values
+ */
 const resolve = (list, name, data = {}) => {
   const path = resolvePath(list, name);
   const builtPath = resolveVariables(path, data);
@@ -40,4 +49,10 @@ const resolve = (list, name, data = {}) => {
   return builtPath;
 };
 
-module.exports = { resolve, splitPath, resolvePath, replaceVariable, resolveVariables };
+module.exports = {
+  resolve,
+  splitPath,
+  resolvePath,
+  replaceVariable,
+  resolveVariables
+};
